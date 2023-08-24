@@ -5,26 +5,20 @@ import ProposalRow from "../ProposalRow";
 
 import "./ProposalList.css";
 
-const ProposalList = () => (
-    <ul data-testid="proposal-list" className="ProposalList">
-        {[].map((proposal) => (
-            <li
-                key={proposal.id}
-                className="ProposalList__item"
-            >
-                <Link
-                    key={proposal.id}
-                    className="ProposalList__item__link"
-                    to={`/proposals`}
-                >
-                    <ProposalRow
-                        proposal={proposal}
-                        onStatusUpdate={() => {}}
-                    />
-                </Link>
-            </li>
-        ))}
-    </ul>
+const ProposalList = ({ proposals }) => (
+  <ul data-testid="proposal-list" className="ProposalList">
+    {proposals.map((proposal) => (
+      <li key={proposal.id} className="ProposalList__item">
+        <Link
+          key={proposal.id}
+          className="ProposalList__item__link"
+          to={`/proposals/${proposal.id}`}
+        >
+          <ProposalRow proposal={proposal} onStatusUpdate={() => {}} />
+        </Link>
+      </li>
+    ))}
+  </ul>
 );
 
 export default ProposalList;
